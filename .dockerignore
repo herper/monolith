@@ -1,0 +1,8 @@
+.git/
+.github/
+logs/
+data/
+secrets/
+wwwroot/
+services/mariadb/scripts/
+services/openresty/ssl/
