@@ -50,7 +50,7 @@ Modify the files in the `secrets` directory. The `mariadb-root-pwd` file contain
 Build and run all containers in the background:
 
 ```bash
-docker compose up -d
+sudo docker compose up -d
 ```
 
 ### Step 5: Browse the website
@@ -92,19 +92,19 @@ monolith
 
 ```bash
 # Build and run all containers in the background
-docker compose up -d
+sudo docker compose up -d
 
 # Build and run specified containers in the background
-docker compose up -d openresty php mariadb
+sudo docker compose up -d openresty php mariadb
 
 # Stop all containers and remove the network
-docker compose down
+sudo docker compose down
 
 # Manage a specific service (using PHP as an example here)
-docker compose start php            # Start the service
-docker compose stop php             # Stop the service
-docker compose restart php          # Restart the service
-docker compose build php            # Rebuild the service
+sudo docker compose start php            # Start the service
+sudo docker compose stop php             # Stop the service
+sudo docker compose restart php          # Restart the service
+sudo docker compose build php            # Rebuild the service
 ```
 
 ### Accessing Containers
@@ -113,22 +113,22 @@ During the maintenance process, it is often necessary to enter containers using 
 
 ```bash
 # Execute a command in a running PHP container
-docker exec -it php /bin/sh
+sudo docker exec -it php /bin/sh
 
 # Execute a command in a running Nginx container
-docker exec -it openresty /bin/sh
+sudo docker exec -it openresty /bin/sh
 
 # Execute a command in a running Redis container
-docker exec -it redis /bin/sh
+sudo docker exec -it redis /bin/sh
 
 # Execute a command in a running Memcached container
-docker exec -it memcached /bin/sh
+sudo docker exec -it memcached /bin/sh
 
 # Execute a command in a running phpMyAdmin container
-docker exec -it phpmyadmin /bin/bash
+sudo docker exec -it phpmyadmin /bin/bash
 
 # Execute a command in a running Mariadb container
-docker exec -it mariadb /bin/bash
+sudo docker exec -it mariadb /bin/bash
 ```
 
 ## 📚 FAQs
@@ -138,7 +138,7 @@ docker exec -it mariadb /bin/bash
 After change the Nginx config file, you need to execute this command to make it take effect:
 
 ```bash
-docker exec -it openresty nginx -s reload
+sudo docker exec -it openresty nginx -s reload
 ```
 
 ### PHP install extensions
@@ -146,7 +146,7 @@ docker exec -it openresty nginx -s reload
 Installing PHP extensions using `install-php-extensions` requires modifying the `PHP_EXTENSIONS` variable in the `.env` config file and then rebuilding the PHP container.
 
 ```bash
-docker compose build php
+sudo docker compose build php
 ```
 
 > Supported PHP Extensions：https://github.com/mlocati/docker-php-extension-installer#supported-php-extensions
@@ -156,7 +156,7 @@ docker compose build php
 Before executing the command for the first time, it is recommended to change the mirrors:
 
 ```bash
-docker exec -it php /bin/sh
+sudo docker exec -it php /bin/sh
 composer config -g repos.packagist composer https://mirrors.tencent.com/composer/
 ```
 

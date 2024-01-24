@@ -56,7 +56,7 @@ PHPMYADMIN_WEB_PORT=28080
 构建并后台运行所有容器：
 
 ```bash
-docker compose up -d
+sudo docker compose up -d
 ```
 
 ### 第五步：网站浏览
@@ -98,19 +98,19 @@ monolith
 
 ```bash
 # 构建并后台运行所有容器
-docker compose up -d
+sudo docker compose up -d
 
 # 构建并后台运行指定容器
-docker compose up -d openresty php mariadb
+sudo docker compose up -d openresty php mariadb
 
 # 停止所有容器并移除网络
-docker compose down
+sudo docker compose down
 
 # 管理指定服务（此处以 PHP 为例）
-docker compose start php            # 启动服务
-docker compose stop php             # 停止服务
-docker compose restart php          # 重启服务
-docker compose build php            # 重新构建服务
+sudo docker compose start php            # 启动服务
+sudo docker compose stop php             # 停止服务
+sudo docker compose restart php          # 重启服务
+sudo docker compose build php            # 重新构建服务
 ```
 
 ### 进入容器
@@ -119,22 +119,22 @@ docker compose build php            # 重新构建服务
 
 ```bash
 # 进入运行中的 PHP 容器
-docker exec -it php /bin/sh
+sudo docker exec -it php /bin/sh
 
 # 进入运行中的 Nginx 容器
-docker exec -it openresty /bin/sh
+sudo docker exec -it openresty /bin/sh
 
 # 进入运行中的 Redis 容器
-docker exec -it redis /bin/sh
+sudo docker exec -it redis /bin/sh
 
 # 进入运行中的 Memcached 容器
-docker exec -it memcached /bin/sh
+sudo docker exec -it memcached /bin/sh
 
 # 进入运行中的 phpMyAdmin 容器
-docker exec -it phpmyadmin /bin/bash
+sudo docker exec -it phpmyadmin /bin/bash
 
 # 进入运行中的 Mariadb 容器
-docker exec -it mariadb /bin/bash
+sudo docker exec -it mariadb /bin/bash
 ```
 
 ## 📚 常见问题
@@ -144,7 +144,7 @@ docker exec -it mariadb /bin/bash
 修改 Nginx 配置文件之后，需要执行此命令使之生效：
 
 ```bash
-docker exec -it openresty nginx -s reload
+sudo docker exec -it openresty nginx -s reload
 ```
 
 ### PHP 安装扩展
@@ -152,7 +152,7 @@ docker exec -it openresty nginx -s reload
 使用 `install-php-extensions` 安装 PHP 扩展，需要在 `.env` 配置文件中修改 `PHP_EXTENSIONS` 变量，然后重新构建 PHP 容器。
 
 ```bash
-docker compose build php
+sudo docker compose build php
 ```
 
 > 支持的扩展列表：https://github.com/mlocati/docker-php-extension-installer#supported-php-extensions
@@ -162,7 +162,7 @@ docker compose build php
 第一次执行命令前，建议先更换镜像源（此处以腾讯云镜像为例，内网机器可使用 `mirrors.tencentyun.com`）：
 
 ```bash
-docker exec -it php /bin/sh
+sudo docker exec -it php /bin/sh
 composer config -g repos.packagist composer https://mirrors.tencent.com/composer/
 ```
 
