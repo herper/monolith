@@ -9,7 +9,7 @@ RUN if [ ${ALPINE_MIRROR} != "" ]; then \
     fi; \
     sed -i "s/dl-cdn.alpinelinux.org/${alpine_mirror_url}/g" /etc/apk/repositories
 
-RUN apk update && apk --no-cache add tzdata
+RUN apk update && apk --no-cache add tzdata logrotate
 
 COPY logrotate/openresty /etc/logrotate.d/openresty
 

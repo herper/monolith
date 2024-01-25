@@ -1,14 +1,12 @@
 /var/log/nginx/*.log {
     daily
     compress
-    rotate 30
+    rotate 7
     missingok
     notifempty
     dateext
     sharedscripts
     postrotate
-        if [ -f /var/run/nginx.pid ]; then
-            kill -USR1 `cat /var/run/nginx.pid`
-        fi
+        [ -f /var/run/nginx.pid ] && kill -USR1 "$(cat /var/run/nginx.pid)"
     endscript
 }
