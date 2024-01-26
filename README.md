@@ -157,7 +157,7 @@ Before executing the command for the first time, it is recommended to change the
 
 ```bash
 sudo docker exec -it php /bin/sh
-composer config -g repos.packagist composer https://mirrors.tencent.com/composer/
+composer config -g repos.packagist composer https://mirrors.cloud.tencent.com/composer/
 ```
 
 ### PHP Slow Script Log

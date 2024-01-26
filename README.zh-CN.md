@@ -163,7 +163,7 @@ sudo docker compose build php
 
 ```bash
 sudo docker exec -it php /bin/sh
-composer config -g repos.packagist composer https://mirrors.tencent.com/composer/
+composer config -g repos.packagist composer https://mirrors.cloud.tencent.com/composer/
 ```
 
 ### PHP 开启慢脚本日志
