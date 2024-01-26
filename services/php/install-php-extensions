@@ -21,7 +21,7 @@ if ! which docker-php-ext-configure >/dev/null || ! which docker-php-ext-enable 
 	exit 1
 fi
 
-IPE_VERSION=master
+IPE_VERSION=2.1.79
 
 StandWithUkraine() {
 	if test -t 1 && ! grep -Eq '^VERSION=.*jessie' /etc/os-release; then
@@ -810,6 +810,12 @@ buildRequiredPackageLists() {
 				;;
 			ffi@debian)
 				buildRequiredPackageLists_volatile="$buildRequiredPackageLists_volatile libffi-dev"
+				;;
+			ftp@alpine)
+				buildRequiredPackageLists_volatile="$buildRequiredPackageLists_volatile $buildRequiredPackageLists_libssldev"
+				;;
+			ftp@debian)
+				buildRequiredPackageLists_volatile="$buildRequiredPackageLists_volatile $buildRequiredPackageLists_libssldev"
 				;;
 			gd@alpine)
 				buildRequiredPackageLists_persistent="$buildRequiredPackageLists_persistent freetype libjpeg-turbo libpng libxpm"
@@ -2400,6 +2406,9 @@ EOF
 				make install
 				cd - >/dev/null
 			fi
+			;;
+		ftp)
+			docker-php-ext-configure ftp --with-openssl-dir=/usr
 			;;
 		gd)
 			if test $PHP_MAJMIN_VERSION -le 506; then
