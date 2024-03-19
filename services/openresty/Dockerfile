@@ -13,4 +13,6 @@ RUN apk update && apk --no-cache add tzdata logrotate
 
 COPY logrotate/openresty /etc/logrotate.d/openresty
 
-CMD service cron start && /usr/local/openresty/bin/openresty -g "daemon off;"
+RUN echo "0 0 * * * logrotate -f /etc/logrotate.d/openresty" >> /etc/crontabs/root
+
+CMD crond -b && /usr/local/openresty/bin/openresty -g "daemon off;"
