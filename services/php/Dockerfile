@@ -1,5 +1,5 @@
 ARG PHP_VERSION
-FROM php:${PHP_VERSION:-8.2-fpm-alpine}
+FROM php:${PHP_VERSION:-8.3-fpm-alpine}
 
 ARG ALPINE_MIRROR
 RUN if [ ${ALPINE_MIRROR} != "" ]; then \

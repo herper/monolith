@@ -1,5 +1,5 @@
 ARG OPENRESTY_VERSION
-FROM openresty/openresty:${OPENRESTY_VERSION:-1.25.3.2-0-alpine}
+FROM openresty/openresty:${OPENRESTY_VERSION:-1.27.1.1-0-alpine}
 
 ARG ALPINE_MIRROR
 RUN if [ ${ALPINE_MIRROR} != "" ]; then \
