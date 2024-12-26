@@ -15,4 +15,4 @@ COPY logrotate/openresty /etc/logrotate.d/openresty
 
 RUN echo "0 0 * * * logrotate -f /etc/logrotate.d/openresty" >> /etc/crontabs/root
 
-CMD crond -b && /usr/local/openresty/bin/openresty -g "daemon off;"
+CMD ["sh", "-c", "crond -b && /usr/local/openresty/bin/openresty -g 'daemon off;'"]
